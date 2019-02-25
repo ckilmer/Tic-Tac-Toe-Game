@@ -8,7 +8,15 @@
   <meta name="description" content="Tic-Tac-Toe game">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<style>
+.Square {
+  height: 100px;
+  width: 100px;
+  font-size: 50pt;
+  text-align: center;
+}
 
+</style>
 
 </head>
 
@@ -20,19 +28,25 @@ let board = new Board();
 board.printBoard();
 
 </script>
+<table border="1">
+  <tr>
+    <td class="Square" ; onclick="board.game(0,0)"; id='0, 0'></td>
+    <td class="Square" ; onclick="board.game(0,1)"; id='0, 1'></td>
+    <td class="Square" ; onclick="board.game(0,2)"; id='0, 2'></td>
+  </tr>
+  <tr>
+    <td class="Square" ; onclick="board.game(1,0)"; id='1, 0'></td>
+    <td class="Square" ; onclick="board.game(1,1)"; id='1, 1'></td>
+    <td class="Square" ; onclick="board.game(1,2)"; id='1, 2'></td>
+  </tr>
+  <tr>
+    <td class="Square" ; onclick="board.game(2,0)"; id='2, 0'></td>
+    <td class="Square" ; onclick="board.game(2,1)"; id='2, 1'></td>
+    <td class="Square" ; onclick="board.game(2,2)"; id='2, 2'></td>
+  </tr>
+</table>
 
-<button onclick="board.game(0,0)"; id='0, 0'></button>
-<button onclick="board.game(0,1)"; id='0, 1'></button>
-<button onclick="board.game(0,2)"; id='0, 2'></button>
-<br>
-<button onclick="board.game(1,0)"; id='1, 0'></button>
-<button onclick="board.game(1,1)"; id='1, 1'></button>
-<button onclick="board.game(1,2)"; id='1, 2'></button>
-<br>
-<button onclick="board.game(2,0)"; id='2, 0'></button>
-<button onclick="board.game(2,1)"; id='2, 1'></button>
-<button onclick="board.game(2,2)"; id='2, 2'></button>
-<br>
+
 <button onclick="board.reset()"; id='reset'>Reset Board</button>
 <p id='description'></p>
 
