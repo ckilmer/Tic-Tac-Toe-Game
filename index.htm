@@ -18,18 +18,23 @@
 <script>
 let board = new Board();
 board.printBoard();
+
 </script>
 
-<button onclick="board.makeMove(0,0)">0,0</button>
-<button onclick="board.makeMove(0,1)">0,1</button>
-<button onclick="board.makeMove(0,2)">0,1</button>
+<button onclick="board.game(0,0)"; id='0, 0'></button>
+<button onclick="board.game(0,1)"; id='0, 1'></button>
+<button onclick="board.game(0,2)"; id='0, 2'></button>
 <br>
-<button onclick="board.makeMove(1,0)">1,0</button>
-<button onclick="board.makeMove(1,1)">1,1</button>
-<button onclick="board.makeMove(1,2)">1,2</button>
+<button onclick="board.game(1,0)"; id='1, 0'></button>
+<button onclick="board.game(1,1)"; id='1, 1'></button>
+<button onclick="board.game(1,2)"; id='1, 2'></button>
 <br>
-<button onclick="board.makeMove(2,0)">2,0</button>
-<button onclick="board.makeMove(2,1)">2,2</button>
-<button onclick="board.makeMove(2,2)">2,2</button>
+<button onclick="board.game(2,0)"; id='2, 0'></button>
+<button onclick="board.game(2,1)"; id='2, 1'></button>
+<button onclick="board.game(2,2)"; id='2, 2'></button>
+<br>
+<button onclick="board.reset()"; id='reset'>Reset Board</button>
+<p id='description'></p>
+
 </body>
 </html>
