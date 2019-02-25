@@ -1,3 +1,7 @@
+function get_html_id(row, col){
+  return row.toString()+', '+col.toString();
+}
+
 class Board {
   constructor() {
     this.board = [
@@ -25,11 +29,14 @@ class Board {
     for (var i=0; i < 3; i++){
       for (var j=0; j < 3; j++){
         this.board[i][j] = '_';
-        var htmlId = i.toString() + ', '+ j.toString();
+        var htmlId = get_html_id(i, j);
         document.getElementById(htmlId).innerHTML = '';
+        document.getElementById(htmlId).style.backgroundColor = 'white';
       }
     }
+    document.getElementById('description').innerHTML = '';
   }
+
   makeMove(row, col){
     var player = this.currentMove % 2;
     if (row >= 0 && row <= 2 && col >= 0 && col <= 2){
@@ -48,6 +55,7 @@ class Board {
   }
 
   checkWinner(){
+    var htmlIDs = new Set();
     var gameIsOver = null;
     for (i=0; i < 3; i++){
       for ( var j=0; j < 3; j++){
@@ -57,40 +65,64 @@ class Board {
       }
     }
     for (var i=0; i < 3; i++){
-      if (this.board[i][0] != "_" && this.board[i][0] == this.board[i][1] && this.board[i][0] == this.board[i][2]){
+      if (this.board[i][0] != "_" &&
+          this.board[i][0] == this.board[i][1] &&
+          this.board[i][0] == this.board[i][2]){
         console.log("Winner!");
-        gameIsOver = this.board[i][0];
+        htmlIDs.add(get_html_id(i,0));
+        htmlIDs.add(get_html_id(i,1));
+        htmlIDs.add(get_html_id(i,2));
+        gameIsOver = [this.board[i][0]];
       }
     }
     for (i=0; i < 3; i++){
-      if (this.board[0][i] != "_" && this.board[0][i] == this.board[1][i] && this.board[0][i] == this.board[2][i]){
+      if (this.board[0][i] != "_" &&
+          this.board[0][i] == this.board[1][i] &&
+          this.board[0][i] == this.board[2][i]){
         console.log("Winner!");
+        htmlIDs.add(get_html_id(0,i));
+        htmlIDs.add(get_html_id(1,i));
+        htmlIDs.add(get_html_id(2,i));
         gameIsOver = this.board[0][i];
       }
     }
-    if (this.board[0][0] != "_" && this.board[0][0] == this.board[1][1] && this.board[0][0] == this.board[2][2]){
+    if (this.board[0][0] != "_" &&
+    this.board[0][0] == this.board[1][1] &&
+    this.board[0][0] == this.board[2][2]){
       console.log("Winner!");
+      htmlIDs.add(get_html_id(0,0));
+      htmlIDs.add(get_html_id(1,1));
+      htmlIDs.add(get_html_id(2,2));
       gameIsOver = this.board[0][0];
     }
-    if (this.board[0][2] != "_" && this.board[0][2] == this.board[1][1] && this.board[0][2] == this.board[2][0]){
+    if (this.board[0][2] != "_" &&
+    this.board[0][2] == this.board[1][1] &&
+    this.board[0][2] == this.board[2][0]){
       console.log("Winner!");
+      htmlIDs.add(get_html_id(0,2));
+      htmlIDs.add(get_html_id(1,1));
+      htmlIDs.add(get_html_id(2,0));
       gameIsOver = this.board[0][2];
     }
 
-    return gameIsOver;
+    return [gameIsOver, htmlIDs];
   }
 
   game(row, col){
-    if (this.checkWinner() === false){
+    if (!this.checkWinner()[0] && this.checkWinner()[0] != null){
       this.makeMove(row, col);
     }
-    if (this.checkWinner() !== false){
-      if (this.checkWinner() === null){
+    if (this.checkWinner()[0] !== false){
+      if (this.checkWinner()[0] === null){
         console.log('No winner');
         document.getElementById('description').innerHTML = 'No winner';
       } else {
-        console.log('Winner is: '+ this.checkWinner());
-        document.getElementById('description').innerHTML = 'Winner is: '+ this.checkWinner();
+        console.log('Winner is: '+ this.checkWinner()[0]);
+        document.getElementById('description').innerHTML = this.checkWinner()[0]
+            + ' is the winner';
+        for (let value of this.checkWinner()[1].values()){
+          document.getElementById(value).style.backgroundColor = '#a4e899';
+        }
       }
     }
   }

@@ -9,6 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+body {
+  font-family: sans-serif;
+}
 table {
   margin-left: auto;
   margin-right: auto;
@@ -16,9 +19,17 @@ table {
   margin-bottom: auto;
 }
 
-button{
-  margin-left: auto;
-  margin-right: auto;
+div {
+  align-items: center;
+  text-align: center;
+  font-size: 40pt;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h {
+  font-size: 60pt;
 }
 
 .Square {
@@ -27,7 +38,14 @@ button{
   font-size: 50pt;
   text-align: center;
 }
-
+#description {
+  color: #a4e899;
+}
+#reset {
+  background-color: #cecece;
+  margin: 2px;
+  padding: 5px;
+}
 </style>
 
 </head>
@@ -40,6 +58,9 @@ let board = new Board();
 board.printBoard();
 
 </script>
+
+<div><h>Tic-Tac-Toe Game</h></div>
+
 <table border="1">
   <tr>
     <td class="Square" ; onclick="board.game(0,0)"; id='0, 0'></td>
@@ -57,10 +78,9 @@ board.printBoard();
     <td class="Square" ; onclick="board.game(2,2)"; id='2, 2'></td>
   </tr>
 </table>
-
-
-<button onclick="board.reset()"; id='reset'>Reset Board</button>
-<p id='description'></p>
-
+<div>
+  <div onclick="board.reset()"; id='reset'>Reset Board</div>
+</div>
+<div id='description'></div>
 </body>
 </html>
