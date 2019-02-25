@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Robert Kilmer Photography</title>
+  <meta name="description" content="Tic-Tac-Toe game">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+</head>
+
+<body>
+<script type="text/javascript" src="game.js"></script>
+
+<script>
+let board = new Board();
+board.printBoard();
+</script>
+
+<button onclick="board.makeMove(0,0)">0,0</button>
+<button onclick="board.makeMove(0,1)">0,1</button>
+<button onclick="board.makeMove(0,2)">0,1</button>
+<br>
+<button onclick="board.makeMove(1,0)">1,0</button>
+<button onclick="board.makeMove(1,1)">1,1</button>
+<button onclick="board.makeMove(1,2)">1,2</button>
+<br>
+<button onclick="board.makeMove(2,0)">2,0</button>
+<button onclick="board.makeMove(2,1)">2,2</button>
+<button onclick="board.makeMove(2,2)">2,2</button>
+</body>
+</html>
